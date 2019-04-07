@@ -46,7 +46,7 @@ locate的用法非常简单，但它只是在索引数据库中查找文件，�
 
 **根据文件名查找：**
 
--name FILENAME：支持使用globbing字符
+## -name FILENAME：支持使用globbing字符
 
 ​            *：任意长度的任意字符
 
