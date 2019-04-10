@@ -1,6 +1,6 @@
 [TOC]
 
-<span id="des">destination</span>
+<span id="des"></span>
 
 # 0.  引入
 
@@ -905,5 +905,4 @@ kill %job_num
 
 - 本博客借用了不少他人的内容，若有侵权，敬请告知。邮箱：445701902@qq.com
 
-[jump](#des)
-
+[点击此处跳转至文章开头](#des)
