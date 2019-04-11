@@ -68,7 +68,7 @@
 
 目前Linux的发行版多的惊人，下面给出一张1992-2010年的Linux发行版图。
 
-![Linux发行版分支图](C:\Users\44570\Desktop\常用资料\Linux发行版分支图.png)
+![Linux发行版分支图](images/Linux发行版分支图.png)
 
 作为Linux初学者，我们只需要学习几个主流的发行版即可。
 
