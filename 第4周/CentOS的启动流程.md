@@ -216,7 +216,7 @@ Linux的引导程序还可以提供菜单信息，让用户选择其他的引导
 
 **第1阶段**：运行Boot Loader主程序，由于MBR大小的限制，使得Boot Loader的大小不能超过446字节，而446字节的大小根本没办法保存一个具有丰富功能的引导程序。因此GRUB做了拆分，仅将关键的主程序保存在Boot Loader当中。
 
-**第1.5阶段**：这个阶段主要负责与第2阶段所需要使用到的文件的所在分区的文件系统进行交互。
+**第1.5阶段**：这个阶段主要负责与第2阶段所需要使用到的文件的所在分区的文件系统进行交互，让阶段1的boot loader能识别阶段2所在的分区上的文件系统。
 
 **第2阶段**：通过Boot Loader加载所有配置文件及相关的环境参数信息，这些配置文件及相关的环境参数都存放在挂载在boot的磁盘分区中的/boot/grub目录下。完成配置文件的读取后就可以提供菜单界面供用户选择要加载的内核。
 
@@ -677,7 +677,7 @@ start-ttys.conf：这是关于启动终端的配置信息，对应CentOS5下的`
 
 rc.conf和init-system-dbus.conf：这些都是关于启动服务的配置文件，对应于CentOS5的`/etc/rc.d/rc`文件和`/etc/rc.d/rc#.d/`目录。
 
-
+> CentOS 6的系统启动过程(详细的写)：POST --> Boot Sequence(BIOS) --> Boot Loader (MBR) --> Kernel(ramdisk) --> rootfs --> switchroot --> /sbin/init -->(/etc/inittab, /etc/init/*.conf) --> 设定默认运行级别 --> 系统初始化脚本 --> 关闭或启动对应级别下的服务 --> 启动终端
 
 ### 2.4.10  CentOS 7的init程序
 
