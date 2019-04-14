@@ -102,7 +102,7 @@ Linux系统由内核和根文件系统组成。CentOS的启动流程的学习会
 
 ​	**核心文件**：保存格式为/boot/vmlinuz-VERSION-release（VERSION指的是版本，release是发行版本,vmlinuz的z表示该文件是压缩过的）
 
-​	**模块文件**：保存于/lib/modules文件夹下
+​	**模块文件**：保存于/lib/modules/VERSION-release文件夹下（内核模块一定要与内核版本匹配）
 
 ​	**ramdisk**：在CentOS5下的保存格式为：/boot/initrd-VERSION-release.img；CentOS6和7的保存格式为/boot/initramfs-VERSION-release.img(从扩展名是.img可以看出该文件是一个磁盘映像文件)。ramdisk是一个临时根文件系统，是在CentOS开机流程时需要使用到的。后面会详细介绍。
 
