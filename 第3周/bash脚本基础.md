@@ -92,8 +92,10 @@ bash中的变量种类一般依据生效范围来划分：
 **变量赋值**：name='value'
 value是以下三种：
 	1.直接赋值字符串：name='content'
-	2.引用其他以有变量：name="\${oldvariable}"或name="​\$oldvariable"
-	3.引用其他命令执行后的回显字符：name=\`COMMAND\`,name=\$(COMMAND)
+
+​	2.引用其他以有变量：name="\${oldvariable}"或name="​\$oldvariable"
+
+​	3.引用其他命令执行后的回显字符：name=\`COMMAND\`,name=\$(COMMAND)
 
 **变量的引用方法**：\$name或​\${name}，使用前者在编写时可能会出现错误。例如：想引用name变量后再加一个字符a的话用前者`​$namea`会被bash解释器错认为是引用namea变量，而使用`​${name}a`来表示则不会被解释错误。
 
