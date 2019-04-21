@@ -1,0 +1,95 @@
+# 1、每12小时备份并压缩/etc/目录至/backup目录中，保存文件名称格式为，"etc-年-月-日-时-分.tar.gz"
+
+该题需要使用到crond服务，先务必确认该服务是启动的，并是开机自动启动的：
+
+```shell
+systemctl status crond
+```
+
+若显示active，则继续实验，若没有启动或没有开机自动启动的，可以输入下面的命令
+
+```shell
+systemctl start crond
+systemctl enable crond
+```
+
+注意若无`/backup`目录则需要手动创建一个：
+
+```shell
+mkdir /backup
+```
+
+然后我们就可以编辑crond任务（crond任务编辑可以参考`/etc/crontab`文件）：
+
+```shell
+[root@www ~]# crontab -e
+* */12 * * * /usr/bin/tar -czvf /backup/etc-$(/usr/bin/date +"%Y-%m-%d-%H-%M").tar.gz /etc/*
+```
+
+
+
+# 2、rpm包管理功能总结以及实例应用演示。
+
+rpm的详细信息可以参考这篇博客：https://github.com/AaYyLink/Blog/blob/master/%E5%BD%92%E6%A1%A3/RPM%E7%A8%8B%E5%BA%8F%E5%8C%85%E7%AE%A1%E7%90%86.md
+
+
+
+# 
+
+
+
+# 3、yum的配置和使用总结以及yum私有仓库的创建。
+
+
+
+
+
+# 4、写一个脚本实现列出以下菜单给用户：
+
+（1）disk：show disk info信息
+
+（2）mem: show memory info信息
+
+（3）cpu: show cpu info信息
+
+（*）quit
+
+脚本内容如下：
+
+```bash
+#!/bin/bash
+#
+cat << EOF
+(1)disk：show disk info信息
+(2)mem: show memory info信息
+(3)cpu: show cpu info信息
+(*)quit
+============================
+EOF
+read -p "please Enter your option: " option
+
+if [ $option == "disk" ];then
+    fdisk -l /dev/[hs]d[a-z]
+elif [ $option == "mem" ];then
+    free -m
+elif [ $option == "cpu" ];then
+    lscpu
+else
+    exit 0
+fi
+```
+
+
+
+5、sed用法总结并结合实例演示
+
+
+
+6、 用bash实现统计访问日志文件中状态码大于等于400的IP数量并排序
+
+
+
+7、 使用自制的yum源安装ftp、openssh、curl、wget、tcpdump等软件包
+
+
+

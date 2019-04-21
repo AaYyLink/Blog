@@ -38,11 +38,11 @@ grub 1.x(grub 2)：CentOS 7所使用的grub版本
 
 grub的启动分为下面三个阶段：
 
-**stage 1**：启动mbr中得boot loader，而boot loader仅仅只是主程序段。
+**stage 1**：存储于MBR上。启动mbr中得boot loader，而boot loader仅仅只是主程序段。
 
-**stage 1_5**：让stage 1中的boot loader能识别stage 2所在分区的文件系统。
+**stage 1_5**：存储于MBR之后的扇区上。让stage 1中的boot loader能识别stage 2所在分区的文件系统。
 
-**stage 2**：加载/boot/grub下的配置信息
+**stage 2**：存储于`/boot/grub`上。加载/boot/grub下的配置信息
 
 
 
@@ -455,7 +455,7 @@ fat_stage1_5   jfs_stage1_5      stage1             vstafs_stage1_5
 
 ```
 
-然后配置新boot分区上的grub.conf文件，并在其中新增一个菜单项：
+然后配置新boot分区上的grub.conf文件(该文件原先并不存在，得自己创建)，并在其中新增一个菜单项：
 
 ```bash
 [root@localhost boot]# vim /mnt/boot/grub/grub.conf
