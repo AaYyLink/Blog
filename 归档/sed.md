@@ -74,7 +74,7 @@ script内容由地址定界和编辑命令组成：
         inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
 ```
 
-然后我们可以观察，ip地址前可以用正则表达式`s/.*inet[[:space:]]\+`来匹配，因此用以下操作将其剔除``
+然后我们可以观察，ip地址前的内容可以用正则表达式`s/.*inet[[:space:]]\+`来匹配，因此用以下操作将其剔除``
 
 ```shell
 [root@localhost Packages]# ifconfig | grep "inet\>" | sed "s/^.*inet[[:space:]]\+//g"

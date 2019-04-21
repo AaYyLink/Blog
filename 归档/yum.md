@@ -124,7 +124,7 @@ cost=			# 指明当前仓库的访问开销
 关于程序包的常用命令：
 
 ```shell
-yum install <PACKAGENAME> [PACKAGE2NAME]...
+yum install <PACKAGENAME> [PACKAGE2NAME]... [--enablerepo=REPOID]	# 后面的选项指定用哪个仓库的程序包
 yum update <PACKAGENAME> [PACKAGE2NAME]...
 yum update-to <PACKAGENAME> [PACKAGE2NAME]...
 yum downgrade <PACKAGENAME> [PACKAGE2NAME]...
@@ -135,6 +135,7 @@ yum list [PACKAGENAME] [PACKAGE2NAME]...
 yum info <PACKAGENAME> [PACKAGE2NAME]...
 yum provide <PACKAGENAME> [PACKAGE2NAME]...		# 列出该包提供的特性
 yum deplist <PACKAGENAME> [PACKAGE2NAME]...		# 列出该包依赖的特性
+
 ## 安装时指定-y参数，可以对交互自动回答为yes
 ```
 
@@ -266,25 +267,7 @@ cd /var/ftp/pub/
 createrepo .		# 指定Packages所在目录的父目录中创建repodata
 ```
 
-将刚刚配置的EPEL源和CDROM源都关闭：
 
-```shell
-[root@www ~]# vim /etc/yum.repos.d/CDROM.repo
-[CDROM]
-name=CDROM
-baseurl=file:///media/cdrom
-enabled=0			# 配置改行关闭该源的使用
-gpgcheck=0
-```
-
-```shell
-[root@www ~]# vim /etc/yum.repos.d/Aliyun-EPEL.repo
-[Aliyun-EPEL]
-name=Aliyun-EPEL
-baseurl=https://mirrors.aliyun.com/epel/7Server/x86_64/		# 该行填写刚刚目录下有repodata的网址
-enabled=0
-gpgcheck=0
-```
 
 然后配置一个新的配置文件，仓库指向刚刚创建的路径：
 
@@ -307,7 +290,7 @@ yum makecache
 之后使用安装命令检查配置是否成功：
 
 ```shell
-yum install ftp
+yum install ftp --enablerepo=test
 ```
 
 确定Repository ID是否正确。
