@@ -264,20 +264,20 @@ stat testfile
 
 **常用的信息：**
 
-Inode：Inode号
+- Inode：Inode号
 
-Links：文件的硬链接数量
+- Links：文件的硬链接数量
 
-Access：文件隐藏权限和特殊00权限
+- Access：文件隐藏权限和特殊00权限
 
-Uid：文件属主及其Uid
+- Uid：文件属主及其Uid
 
-Gid：文件的属组及其Gid
+- Gid：文件的属组及其Gid
 
-Context：文件的安全上下文
+- Context：文件的安全上下文
 
-Access：文件的acess time
+- Access：文件的acess time
 
-Modifty：文件的modifty time
+- Modifty：文件的modifty time
 
-Change：文件的change time
+- Change：文件的change time
