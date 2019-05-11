@@ -1,3 +1,7 @@
+[TOC]
+
+
+
 # 1.  DNS介绍
 
 DNS：Domain Name System，域名系统。是一项基于C/S模型的互联网协议负责将域名解析为IP地址，也可以将IP地址解析为域名。使用TCP或UDP的53端口。
