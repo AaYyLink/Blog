@@ -15,7 +15,7 @@
 | RedHat/Fedora | RPM          | rpm,rpmbuild | YUM(yum)           |
 | Debian/Ubuntu | DPKG         | dpkg         | APT(apt-get)       |
 
-> 以上两个发行版各自的再发行版都继承了其包管理机制及线上升级机制，但fedora是一个例外，它是RedHat的再发行版，然而其使用的线上升级机制是dnf，是一个比YUM更加好用的线上升级机制。还需要注意的是，SUSE也使用RPM软件管理机制，但是其rpm包与RedHat的rpm包并不是相互兼容的，也就是说SUSE的rpm包不能在RedHat上正常安装，RedHat的rpm包也是如此。
+> 以上两个发行版各自的再发行版都继承了其包管理机制及线上升级机制，但fedora是一个例外，它是RedHat的再发行版，然而其使用的线上升级机制是dnf，是一个比YUM更加好用的线上升级机制。还需要注意的是，SUSE也使用RPM软件管理机制，但是其rpm包与RedHat的rpm包并不是相互兼容的，也就是说SUSE的rpm包不能在RedHat上正常安装，反之亦然。
 
 ## 1.2  RPM程序包的概念介绍
 
