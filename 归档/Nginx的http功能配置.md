@@ -5,6 +5,18 @@ nginx是俄罗斯人开发的，它可以用来做http服务器、反代服务�
 
 
 本节主要介绍Nginx的http功能配置，并且给出的都为最常用最重要的配置。
+## 0.1 Nginx程序结构
+
+```
+master/worker
+	一个master进程：
+		负载加载和分析配置文件、管理或启动worker进程、平滑升级（不要停止Nginx的服务也可以升级其版本）
+	一个或多个worker进程
+		处理并响应用户请求
+	缓存相关的进程：
+		cache loader：载入缓存对象
+		cache manager：管理缓存对象
+```
 
 # 1. Nginx安装
 
