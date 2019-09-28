@@ -1,5 +1,7 @@
 # 0. 反向代理介绍
 
+![1569398533164](images/1569398533164.png)
+
 **反向代理工作原理**：当客户端发送请求给**反向代理服务器**时，该反向代理服务器并没有真正的请求资源，也不会直接响应客户端的请求，而是在反向代理服务器本地再次生成一个请求发送给真正拥有资源的**后端服务器**。然后后端服务器会将资源响应给反向代理服务器，反向代理服务器再将资源返回给客户端。
 
 **反向代理的优点**：反向代理可以隐藏内网主机的真正IP地址，起到安全的作用；反向代理服务器可以缓存请求到的资源，减轻后端服务器的访问压力。
@@ -17,4 +19,38 @@ Nginx有多种反向代理功能，并且设立了多种反向代理的模块。
 | ngx_http_fastcgi_module  | 用来反向代理fastcgi的请求，可以用来构建LAMP模型              |
 | ngx_http_upstream_module | 定义server组，这些组可以在反代时引用，以实现负载均衡         |
 | ngx_stream_core_module   | 可以实现传输层的反向代理                                     |
+
+接下来将会对这些反向代理模块进行一个个的详解。
+
+# 2. 反向代理模块详解
+
+## 2.1 proxy_pass
+
+```nginx
+Syntax:	proxy_pass URL;
+Default:	—
+Context:	location, if in location, limit_except
+```
+
+该命令用来在反代时，定义反代服务器访问的资源。
+
+该命令的使用有一些注意点（这个注意点在以后的配置当中尤其重要）：
+
+```
+1.当proxy_pass后面所跟的URL不包含uri时，则会将location中的uri传递给后端主机
+	例如：下面的响应资源为http://192.168.10.20:80/index.html
+		location /index.html{
+			proxy_pass http://192.168.10.20:80;
+		}
+2.若proxy_pass后面所跟的URL包含uri时，则使用proxy_pass后的uri传递给后端主机
+	例如：下面的响应资源为http://192.168.10.20:80/a.jpg
+		location /index.html{
+			proxy_pass http://192.168.10.20:80/a.jpg;
+		}
+3.如果location定义其uri时使用了正则表达式的模式，或在if语句或limt_execept中使用proxy_pass指令，则proxy_pass之后必须不能使用uri; 用户请求时传递的uri将直接附加代理到的服务的之后；
+	例如：下面的响应资源为http://192.168.10.20:80/index.html
+		location ~* /uri/ {
+			proxy_pass http://192.168.10.20:80;
+		}
+```
 
